@@ -9,7 +9,7 @@ public class Product {
     private Date edate;
     private double cost;
 
-    public Product(int id, String productName, Date mdate, Date edate, Double cost) {
+    public Product(int id, String productName, Date mdate, Date edate, double cost) {
         this.id = id;
         this.productName = productName;
         this.mdate = mdate;
