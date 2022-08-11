@@ -1,22 +1,32 @@
 package com.sapient.oms.entity;
 
 public class Location {
+    private int id;
     private String lineAddress;
     private int pincode;
     private String city;
     private String state;
     private String country;
     
-    public Location(String lineAddress, int pincode, String city, String state, String country) {
+    public Location(int id,String lineAddress, int pincode, String city, String state, String country) {
         this.lineAddress = lineAddress;
         this.pincode = pincode;
         this.city = city;
         this.state = state;
         this.country = country;
+        this.id = id;
     }
 
     public Location() {
         
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLineAddress() {
