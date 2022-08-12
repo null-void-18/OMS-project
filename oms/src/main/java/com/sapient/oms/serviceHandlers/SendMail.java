@@ -9,14 +9,16 @@ import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import com.sapient.oms.entity.Customer;
  
  
 public class SendMail
 {
  
-   public static void main(String [] args)
+   public void sendmail(String recipient,Customer customer)
    {   
-      String recipient = "kirankoolkidoz@gmail.com";
+     // String recipient = "kirankoolkidoz@gmail.com";
  
       String sender = "kiransekhar18@gmail.com";
  
@@ -33,7 +35,7 @@ public class SendMail
       Session session = Session.getInstance(properties,new Authenticator() {
         @Override
         protected PasswordAuthentication getPasswordAuthentication(){
-            return new PasswordAuthentication("kiransekhar18@gmail.com", "zvkbl");
+            return new PasswordAuthentication("kiransekhar18@gmail.com", "zvkblhsboobsibeo");
         }
       });
 
@@ -49,10 +51,10 @@ public class SendMail
  
          message.setSubject("This is Subject");
  
-         //message.setText("This is a test mail");
-         message.setContent(
-              "<h1>This is actual message embedded in HTML tags</h1>",
-             "text/html");
+         message.setText("You are notified\n"+customer.toString());
+         // message.setContent(
+         //      "<h1>This is actual message embedded in HTML tags</h1>",
+         //     "text/html");
 
  
          Transport.send(message);
