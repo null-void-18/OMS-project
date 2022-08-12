@@ -2,9 +2,13 @@ package com.sapient.oms.serviceHandlers;
 
 import java.util.*;
 import javax.mail.*;
-import javax.mail.internet.*;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
  
  
 public class SendMail
@@ -29,9 +33,11 @@ public class SendMail
       Session session = Session.getInstance(properties,new Authenticator() {
         @Override
         protected PasswordAuthentication getPasswordAuthentication(){
-            return new PasswordAuthentication("kiransekhar18@gmail.com", "kiranceg2001");
+            return new PasswordAuthentication("kiransekhar18@gmail.com", "zvkblhsboobsibeo");
         }
       });
+
+      session.setDebug(true);
  
       try
       {
