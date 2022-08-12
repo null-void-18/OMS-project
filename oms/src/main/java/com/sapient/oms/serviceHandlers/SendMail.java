@@ -33,7 +33,7 @@ public class SendMail
       Session session = Session.getInstance(properties,new Authenticator() {
         @Override
         protected PasswordAuthentication getPasswordAuthentication(){
-            return new PasswordAuthentication("kiransekhar18@gmail.com", "zvkblhsboobsibeo");
+            return new PasswordAuthentication("kiransekhar18@gmail.com", "zvkbl");
         }
       });
 
@@ -49,7 +49,11 @@ public class SendMail
  
          message.setSubject("This is Subject");
  
-         message.setText("This is a test mail");
+         //message.setText("This is a test mail");
+         message.setContent(
+              "<h1>This is actual message embedded in HTML tags</h1>",
+             "text/html");
+
  
          Transport.send(message);
          System.out.println("Mail successfully sent");
