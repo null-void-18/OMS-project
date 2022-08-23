@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-//import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,7 +26,7 @@ public class Store {
     @OneToOne(cascade = CascadeType.ALL)
     private Location location;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "stores")
     private List<Product> products;
 
     public Store(int id, String shopName, int contactNumber, String emailId, Location location,

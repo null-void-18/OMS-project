@@ -9,4 +9,6 @@ public interface IStoreService {
     void save(Store store) throws IOException;
 
     List<Store> getStore();
+
+    void delete(Integer id);
 }

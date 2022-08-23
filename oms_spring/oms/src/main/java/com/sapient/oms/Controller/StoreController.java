@@ -24,9 +24,9 @@ public class StoreController {
     @Autowired  //dependecny injection
     IStoreService storeService;// never create object
     @GetMapping
-    List<Store> getStore() {
+    String getStore() {
         log.debug("called");
-        return storeService.getStore();
+        return storeService.getStore().toString();
         //return "hello controller";
     }
 
@@ -38,6 +38,6 @@ public class StoreController {
 
     @DeleteMapping("/{id}")
     void delete(@PathVariable("id") Integer id){
-        System.out.println(id);
+        storeService.delete(id);
     }
 }

@@ -1,11 +1,13 @@
 package com.sapient.oms.Entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -29,6 +31,9 @@ public class Product {
     @JsonFormat(pattern = "dd/mm/yyyy")
     private Date edate;
     private double cost;
+
+    @ManyToMany
+    private List<Store> stores;
 
     public Product(int id, String productName, Date mdate, Date edate, double cost) {
         this.id = id;
