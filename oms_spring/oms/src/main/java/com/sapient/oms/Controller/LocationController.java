@@ -9,26 +9,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sapient.oms.Entity.Store;
-import com.sapient.oms.Services.StoreService;
+import com.sapient.oms.Entity.Location;
+import com.sapient.oms.Services.LocationService;
 
 @RestController
-@RequestMapping("/store")
-public class StoreController {
+@RequestMapping("/location")
+public class LocationController {
     @Autowired  //dependecny injection
-    StoreService storeService;// never create object
+    LocationService locationService;// never create object
     @GetMapping
     String getStore() {
-        return storeService.getValue().toString();
+        return locationService.getValue().toString();
     }
 
     @PostMapping
-    void save(@RequestBody Store store) {
-        storeService.save(store);
+    void save(@RequestBody Location location) {
+        locationService.save(location);
     }
 
     @DeleteMapping("/{id}")
     void delete(@PathVariable("id") Integer id){
-        storeService.delete(id);
+        locationService.delete(id);
     }
 }

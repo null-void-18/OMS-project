@@ -19,10 +19,14 @@ public class Order {
    @Column(name = "cost")
     private float price;
 
-    public Order(int id) {
+    public Order(int id,float price) {
         this.id = id;
+        this.price = price;
     }
     
+    public Order() {
+
+    }
 
     public float getPrice() {
         return price;
