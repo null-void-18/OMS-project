@@ -16,7 +16,7 @@ public class Email {
 
     public String sendmail(String recipient, Customer customer) {
 
-        String sender = "arunrajmathanabalu@gmail.com";
+        String sender = "kiransekhar18@gmail.com";
 
         String host = "smtp.gmail.com";
 
@@ -30,7 +30,7 @@ public class Email {
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("arunrajmathanabalu@gmail.com", "owgwqsrlkyhfwznd");
+                return new PasswordAuthentication("kiransekhar18@gmail.com", "owgwqsrlkyhfwznd");
             }
         });
 
