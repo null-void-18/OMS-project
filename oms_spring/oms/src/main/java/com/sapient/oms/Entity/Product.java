@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
-@Table(name = "Product")
+@Table(name = "product")
 public class Product {
 
     @Id

@@ -2,12 +2,31 @@ package com.sapient.oms.Entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+//import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "store")
 public class Store {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String shopName;
     private int contactNumber;
     private String emailId;
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Location location;
+
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Product> products;
 
     public Store(int id, String shopName, int contactNumber, String emailId, Location location,
