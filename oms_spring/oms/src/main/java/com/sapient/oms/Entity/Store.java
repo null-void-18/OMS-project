@@ -20,6 +20,14 @@ public class Store {
         this.products = products;
     }
 
+    public Store(int id, String shopName, int contactNumber, String emailId) {
+        this.id = id;
+        this.shopName = shopName;
+        this.contactNumber = contactNumber;
+        this.emailId = emailId;
+
+    }
+
     public Store() {
     }
 

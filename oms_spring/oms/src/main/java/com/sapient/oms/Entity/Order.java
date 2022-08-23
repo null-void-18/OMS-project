@@ -15,13 +15,17 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private OrderStatus orderstatus;
-    private Location deliveraddress;
+   // private Location deliveraddress;
     private float price;
 
-    public Order(int id, OrderStatus orderstatus, Location deliveraddress) {
+    // public Order(int id, OrderStatus orderstatus, Location deliveraddress) {
+    //     this.id = id;
+    //     this.orderstatus = orderstatus;
+    //     this.deliveraddress = deliveraddress;
+    // }
+    public Order(int id, OrderStatus orderstatus) {
         this.id = id;
         this.orderstatus = orderstatus;
-        this.deliveraddress = deliveraddress;
     }
 
     public float getPrice() {
@@ -48,12 +52,12 @@ public class Order {
         this.orderstatus = orderstatus;
     }
 
-    public Location getDeliveraddress() {
-        return deliveraddress;
-    }
+    // public Location getDeliveraddress() {
+    //     return deliveraddress;
+    // }
 
-    public void setDeliveraddress(Location deliveraddress) {
-        this.deliveraddress = deliveraddress;
-    }
+    // public void setDeliveraddress(Location deliveraddress) {
+    //     this.deliveraddress = deliveraddress;
+    // }
 
 }
