@@ -27,4 +27,19 @@ public class ProductService implements IService<Product> {
         productRepository.save(entity);
     }
 
+    public Product findById(Integer id) {
+        return productRepository.findById(id).orElse(null);
+    }
+
+    public Product findByName(String name) {
+        List<Product> products = productRepository.findAll();
+
+        for(Product product : products) {
+            if(product.getProductName().equals(name)){
+                return product;
+            }
+         }
+         return null;
+    }
+
 }

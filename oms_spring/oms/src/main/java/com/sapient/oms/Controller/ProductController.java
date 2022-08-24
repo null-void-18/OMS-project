@@ -26,6 +26,17 @@ public class ProductController {
         productService.save(product);
     }
 
+    @GetMapping("/id/{id}")
+    Product findById(@PathVariable("id") Integer id) {
+        return productService.findById(id);
+    }
+
+    @GetMapping("/name/{productName}")
+    Product findByName(@PathVariable("productName") String name) {
+        return productService.findByName(name);
+    }
+
+
     @DeleteMapping("/{id}")
     void delete(@PathVariable("id") Integer id){
         productService.delete(id);
