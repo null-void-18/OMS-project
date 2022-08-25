@@ -1,11 +1,12 @@
-package com.sapient.oms.Services;
+package com.sapient.oms.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.sapient.oms.Entity.Order;
-import com.sapient.oms.Repositories.OrderRepository;
+
+import com.sapient.oms.entity.Order;
+import com.sapient.oms.repositories.OrderRepository;
 
 
 @Service

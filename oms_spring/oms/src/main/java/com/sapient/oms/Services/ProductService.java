@@ -1,11 +1,13 @@
-package com.sapient.oms.Services;
+package com.sapient.oms.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.sapient.oms.Entity.Product;
-import com.sapient.oms.Repositories.ProductRepository;
+
+import com.sapient.oms.entity.Product;
+import com.sapient.oms.exception.ProductNotFoundException;
+import com.sapient.oms.repositories.ProductRepository;
 
 
 @Service
@@ -27,11 +29,15 @@ public class ProductService implements IService<Product> {
         productRepository.save(entity);
     }
 
-    public Product findById(Integer id) {
-        return productRepository.findById(id).orElse(null);
+    public Product findById(Integer id) throws ProductNotFoundException {
+        Product product = productRepository.findById(id).orElse(null);
+        if(product == null) {
+            throw new ProductNotFoundException();
+        }
+        return product;
     }
 
-    public Product findByName(String name) {
+    public Product findByName(String name) throws ProductNotFoundException {
         List<Product> products = productRepository.findAll();
 
         for(Product product : products) {
@@ -39,7 +45,7 @@ public class ProductService implements IService<Product> {
                 return product;
             }
          }
-         return null;
+         throw new ProductNotFoundException();
     }
 
 }

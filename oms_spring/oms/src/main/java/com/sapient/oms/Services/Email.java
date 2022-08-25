@@ -1,4 +1,4 @@
-package com.sapient.oms.Services;
+package com.sapient.oms.services;
 
 import java.util.*;
 import javax.mail.*;
@@ -10,7 +10,7 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.sapient.oms.Entity.Customer;
+import com.sapient.oms.entity.Customer;
 
 public class Email {
 

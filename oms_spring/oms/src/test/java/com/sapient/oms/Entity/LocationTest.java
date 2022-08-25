@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.sapient.oms.entity.Location;
+
 @SpringBootApplication
 public class LocationTest {
     private Location location;

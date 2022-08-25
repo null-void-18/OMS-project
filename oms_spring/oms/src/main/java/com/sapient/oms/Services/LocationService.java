@@ -1,11 +1,11 @@
-package com.sapient.oms.Services;
+package com.sapient.oms.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sapient.oms.Entity.Location;
-import com.sapient.oms.Repositories.LocationRepository;
+import com.sapient.oms.entity.Location;
+import com.sapient.oms.repositories.LocationRepository;
 
 
 @Service

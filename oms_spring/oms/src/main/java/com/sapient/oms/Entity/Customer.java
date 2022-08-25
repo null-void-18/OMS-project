@@ -1,4 +1,4 @@
-package com.sapient.oms.Entity;
+package com.sapient.oms.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.sapient.oms.Controller;
+package com.sapient.oms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sapient.oms.Entity.Customer;
-import com.sapient.oms.Services.CustomerService;
+import com.sapient.oms.entity.Customer;
+import com.sapient.oms.services.CustomerService;
 
 @RestController
 @RequestMapping("/customer")

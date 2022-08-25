@@ -1,6 +1,6 @@
-package com.sapient.oms.Services;
+package com.sapient.oms.services;
 
-import com.sapient.oms.Entity.Customer;
+import com.sapient.oms.entity.Customer;
 
 public class ManageMail {
     public static void main(String[] args) {

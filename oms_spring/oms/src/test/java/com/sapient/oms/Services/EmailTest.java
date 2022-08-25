@@ -5,7 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.sapient.oms.Entity.Customer;
+import com.sapient.oms.entity.Customer;
+import com.sapient.oms.services.Email;
 
 @SpringBootApplication
 public class EmailTest {

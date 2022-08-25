@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.sapient.oms.entity.Product;
+
 @SpringBootApplication
 public class ProductTest {
     Product product;

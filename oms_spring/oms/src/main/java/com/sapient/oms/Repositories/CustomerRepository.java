@@ -1,9 +1,9 @@
-package com.sapient.oms.Repositories;
+package com.sapient.oms.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.sapient.oms.Entity.Customer;
+import com.sapient.oms.entity.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {

@@ -1,12 +1,12 @@
-package com.sapient.oms.Services;
+package com.sapient.oms.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sapient.oms.Entity.Customer;
-import com.sapient.oms.Repositories.CustomerRepository;
+import com.sapient.oms.entity.Customer;
+import com.sapient.oms.repositories.CustomerRepository;
 
 @Service
 public class CustomerService implements IService<Customer> {

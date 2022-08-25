@@ -1,4 +1,4 @@
-package com.sapient.oms.Controller;
+package com.sapient.oms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.sapient.oms.Entity.Product;
-import com.sapient.oms.Services.ProductService;
+
+import com.sapient.oms.entity.Product;
+import com.sapient.oms.exception.ProductNotFoundException;
+import com.sapient.oms.services.ProductService;
 
 @RestController
 @RequestMapping("/product")
@@ -17,7 +19,7 @@ public class ProductController {
     @Autowired  //dependecny injection
     ProductService productService;// never create object
     @GetMapping
-    String getStore() {
+    String getProduct() {
         return productService.getValue().toString();
     }
 
@@ -27,13 +29,23 @@ public class ProductController {
     }
 
     @GetMapping("/id/{id}")
-    Product findById(@PathVariable("id") Integer id) {
-        return productService.findById(id);
+    String findById(@PathVariable("id") Integer id) {
+        try {
+            Product product = productService.findById(id);
+            return product.toString();
+        } catch (ProductNotFoundException e) {
+            return e.getMessage();
+        } 
     }
 
     @GetMapping("/name/{productName}")
-    Product findByName(@PathVariable("productName") String name) {
-        return productService.findByName(name);
+    String findByName(@PathVariable("productName") String name) {
+        try {
+            Product product = productService.findByName(name);
+            return product.toString();
+        } catch (ProductNotFoundException e) {
+            return e.getMessage();
+        }
     }
 
 

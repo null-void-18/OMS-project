@@ -1,4 +1,4 @@
-package com.sapient.oms.Services;
+package com.sapient.oms.services;
 
 import java.util.List;
 

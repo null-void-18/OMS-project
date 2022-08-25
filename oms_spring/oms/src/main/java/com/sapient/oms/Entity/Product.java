@@ -1,4 +1,4 @@
-package com.sapient.oms.Entity;
+package com.sapient.oms.entity;
 
 import java.util.Date;
 import java.util.List;
