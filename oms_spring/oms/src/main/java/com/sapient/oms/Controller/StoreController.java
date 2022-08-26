@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sapient.oms.entity.Store;
-import com.sapient.oms.services.StoreService;
+import com.sapient.oms.services.IStoreService;
 
 @RestController
 @RequestMapping("/store")
 public class StoreController {
     @Autowired  //dependecny injection
-    StoreService storeService;// never create object
+    IStoreService storeService;// never create object
     @GetMapping
     List<Store> getStore() {
         return storeService.getValue();

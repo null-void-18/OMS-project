@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sapient.oms.entity.Product;
 import com.sapient.oms.exception.ProductNotFoundException;
-import com.sapient.oms.services.ProductService;
+import com.sapient.oms.services.IProductService;
 
 @RestController
 @RequestMapping("/product")
 public class ProductController {
     @Autowired  //dependecny injection
-    ProductService productService;// never create object
+    IProductService productService;// never create object
     @GetMapping
     String getProduct() {
         return productService.getValue().toString();

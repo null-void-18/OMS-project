@@ -3,14 +3,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
 
 import com.sapient.oms.entity.Store;
 import com.sapient.oms.repositories.StoreRepository;
 
 
 @Service
-public class StoreService implements IService<Store> {
+public class StoreService implements IStoreService {
     @Autowired
     StoreRepository storeRepository;
 
@@ -25,6 +24,7 @@ public class StoreService implements IService<Store> {
         return storeRepository.findAll();
     }
 
+    @Override
     public void delete(Integer id) {
         storeRepository.deleteById(id);
     }

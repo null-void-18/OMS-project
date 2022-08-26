@@ -11,10 +11,11 @@ import com.sapient.oms.repositories.ProductRepository;
 
 
 @Service
-public class ProductService implements IService<Product> {
+public class ProductService implements IProductService {
     @Autowired
     ProductRepository productRepository;
 
+    @Override
     public void delete(Integer id) {
         productRepository.deleteById(id);
     }
@@ -30,6 +31,7 @@ public class ProductService implements IService<Product> {
         return 1;
     }
 
+    @Override
     public Product findById(Integer id) throws ProductNotFoundException {
         Product product = productRepository.findById(id).orElse(null);
         if(product == null) {
@@ -38,6 +40,7 @@ public class ProductService implements IService<Product> {
         return product;
     }
 
+    @Override
     public Product findByName(String name) throws ProductNotFoundException {
         List<Product> products = productRepository.findAll();
 

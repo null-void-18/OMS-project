@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sapient.oms.entity.Customer;
-import com.sapient.oms.services.CustomerService;
+import com.sapient.oms.services.ICustomerService;
 
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
     @Autowired  //dependecny injection
-    CustomerService customerService;// never create object
+    ICustomerService customerService;// never create object
     @GetMapping
     String getStore() {
         return customerService.getValue().toString();

@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sapient.oms.entity.Order;
-import com.sapient.oms.services.OrderService;
+import com.sapient.oms.services.IOrderService;
 
 @RestController
 @RequestMapping("/order")
 public class OrderController {
     @Autowired  //dependecny injection
-    OrderService orderService;// never create object
+    IOrderService orderService;// never create object
     @GetMapping
     List<Order> getStore() {
         return orderService.getValue();

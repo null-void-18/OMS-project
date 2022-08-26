@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sapient.oms.entity.Location;
-import com.sapient.oms.services.LocationService;
+import com.sapient.oms.services.ILocationService;
 
 @RestController
 @RequestMapping("/location")
 public class LocationController {
     @Autowired  //dependecny injection
-    LocationService locationService;// never create object
+    ILocationService locationService;// never create object
     @GetMapping
     String getStore() {
         return locationService.getValue().toString();

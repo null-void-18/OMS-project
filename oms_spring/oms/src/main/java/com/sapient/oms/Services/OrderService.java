@@ -4,16 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.sapient.oms.entity.Order;
 import com.sapient.oms.repositories.OrderRepository;
 
 
 @Service
-public class OrderService implements IService<Order> {
+public class OrderService implements IOrderService {
     @Autowired
     OrderRepository orderRepository;
 
+    @Override
     public void delete(Integer id) {
         orderRepository.deleteById(id);
     }

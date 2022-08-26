@@ -9,7 +9,7 @@ import com.sapient.oms.repositories.LocationRepository;
 
 
 @Service
-public class LocationService implements IService<Location> {
+public class LocationService implements ILocationService {
     @Autowired
     LocationRepository locationRepository;
 
