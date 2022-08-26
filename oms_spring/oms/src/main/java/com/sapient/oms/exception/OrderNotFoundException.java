@@ -1,14 +1,8 @@
 package com.sapient.oms.exception;
 
-public class OrderNotFoundException extends Exception {
-    private String errMessage;
+public class OrderNotFoundException extends RuntimeException {
 
-    public OrderNotFoundException() {
-        this.errMessage = "Order Not Found";
-    }
-
-    @Override
-    public String getMessage() {
-        return this.errMessage;
+    public OrderNotFoundException(String errMessage) {
+        super(errMessage);
     }
 }

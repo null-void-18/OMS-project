@@ -24,8 +24,9 @@ public class OrderService implements IService<Order> {
     }
 
     @Override
-    public void save(Order entity) {
+    public int save(Order entity) {
         orderRepository.save(entity);
+        return 1;
     }
 
 }

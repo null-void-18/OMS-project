@@ -29,6 +29,7 @@ public class ProductController {
     }
 
     @GetMapping("/id/{id}")
+    public
     String findById(@PathVariable("id") Integer id) {
         try {
             Product product = productService.findById(id);
@@ -53,4 +54,6 @@ public class ProductController {
     void delete(@PathVariable("id") Integer id){
         productService.delete(id);
     }
+
+    
 }

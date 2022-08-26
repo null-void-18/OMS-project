@@ -23,8 +23,9 @@ public class LocationService implements IService<Location> {
     }
 
     @Override
-    public void save(Location entity) {
+    public int save(Location entity) {
         locationRepository.save(entity);
+        return 1;
     }
 
 }

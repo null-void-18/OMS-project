@@ -25,14 +25,15 @@ public class ProductService implements IService<Product> {
     }
 
     @Override
-    public void save(Product entity) {
+    public int save(Product entity) {
         productRepository.save(entity);
+        return 1;
     }
 
     public Product findById(Integer id) throws ProductNotFoundException {
         Product product = productRepository.findById(id).orElse(null);
         if(product == null) {
-            throw new ProductNotFoundException();
+            throw new ProductNotFoundException("Product id="+id+" not found");
         }
         return product;
     }
@@ -45,7 +46,7 @@ public class ProductService implements IService<Product> {
                 return product;
             }
          }
-         throw new ProductNotFoundException();
+         throw new ProductNotFoundException("Product "+name+" not found");
     }
 
 }

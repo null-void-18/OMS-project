@@ -18,8 +18,9 @@ public class CustomerService implements IService<Customer> {
     }
 
     @Override
-    public void save(Customer entity) {
+    public int save(Customer entity) {
         customerRepository.save(entity);
+        return 1;
     }
 
     @Override
