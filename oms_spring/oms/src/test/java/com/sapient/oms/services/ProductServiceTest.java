@@ -18,6 +18,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.sapient.oms.entity.Product;
+import com.sapient.oms.entity.Inventory;
 import com.sapient.oms.exception.ProductNotFoundException;
 import com.sapient.oms.repositories.ProductRepository;
 
@@ -40,11 +41,12 @@ public class ProductServiceTest {
         expectedProduct.setCost(40);
         expectedProduct.setMdate(new Date());
         expectedProduct.setEdate(new Date());
+        expectedProduct.setInventory(new Inventory());
     }
 
     @Test
     void testSaveProduct() {
-        Product product = new Product(10, "chocolate", new Date(), new Date(), 40);
+        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new Inventory());
         when(productRepository.save(any(Product.class))).thenReturn(product);
         Product actualProduct = productService.save(product);
         assertEquals(actualProduct, expectedProduct);
@@ -52,7 +54,7 @@ public class ProductServiceTest {
 
     @Test
     void testFindProductByIdExists() {
-        Product product = new Product(10, "chocolate", new Date(), new Date(), 40);
+        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new Inventory());
         Optional<Product> product1 = Optional.of(product);
         when(productRepository.findById(10)).thenReturn(product1);
         Product actualProduct = productService.findById(10).orElse(null);
@@ -68,7 +70,7 @@ public class ProductServiceTest {
 
     @Test
     void testFindProductByNameExists() {
-        Product product = new Product(10, "chocolate", new Date(), new Date(), 40);
+        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new Inventory());
         List<Product> products = new ArrayList<>();
         products.add(product);
         when(productRepository.findAll()).thenReturn(products);
@@ -78,7 +80,7 @@ public class ProductServiceTest {
 
     @Test
     void testFindProductByNameDoesNotExist() {
-        Product product = new Product(10, "chocolate", new Date(), new Date(), 40);
+        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new Inventory());
         List<Product> products = new ArrayList<>();
         products.add(product);
         when(productRepository.findAll()).thenReturn(products);

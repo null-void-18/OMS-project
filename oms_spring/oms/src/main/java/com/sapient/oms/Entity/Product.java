@@ -1,13 +1,12 @@
 package com.sapient.oms.entity;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -32,15 +31,16 @@ public class Product {
     private Date edate;
     private double cost;
 
-    @ManyToMany
-    private List<Store> stores;
+    @OneToOne(mappedBy = "store")
+    Inventory inventory;
 
-    public Product(int id, String productName, Date mdate, Date edate, double cost) {
+    public Product(int id, String productName, Date mdate, Date edate, double cost,Inventory inventory) {
         this.id = id;
         this.productName = productName;
         this.mdate = mdate;
         this.edate = edate;
         this.cost = cost;
+        this.inventory = inventory;
     }
 
     public Product() {
@@ -117,5 +117,13 @@ public class Product {
         strBuilder.append(", Expiry:- " + this.edate + " ]");
 
         return strBuilder.toString();
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }

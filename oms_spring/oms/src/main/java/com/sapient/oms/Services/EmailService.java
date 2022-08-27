@@ -12,7 +12,7 @@ import javax.mail.internet.MimeMessage;
 
 import com.sapient.oms.entity.Customer;
 
-public class Email {
+public class EmailService {
 
     public String sendmail(String recipient, Customer customer) {
 
@@ -30,7 +30,7 @@ public class Email {
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("kiransekhar18@gmail.com", "owgwqsrlkyhfwznd");
+                return new PasswordAuthentication("kiransekhar18@gmail.com", "zvkblhsboobsibeo");
             }
         });
 
@@ -43,15 +43,14 @@ public class Email {
 
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 
-            message.setSubject("This is Subject");
+            message.setSubject("Subject");
 
-            message.setText("You are notified \n" + customer.toString());
+            message.setText("This is the text");
            
             Transport.send(message);
-            return "Mail successfully sent";
+            return "Mail sent successfully";
         } catch (MessagingException mex) {
-            mex.printStackTrace();
-            return "mail not send";
+            return "Mail not sent";
         }
     }
 }

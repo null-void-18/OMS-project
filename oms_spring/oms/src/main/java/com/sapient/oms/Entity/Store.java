@@ -1,13 +1,10 @@
 package com.sapient.oms.entity;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,17 +22,16 @@ public class Store {
     @OneToOne(cascade = CascadeType.ALL)
     private Location location;
 
-    @ManyToMany(mappedBy = "stores")
-    private List<Product> products;
+    @OneToOne(mappedBy = "product")
+    Inventory inventory;
 
-    public Store(int id, String shopName, int contactNumber, String emailId, Location location,
-            List<Product> products) {
+    public Store(int id, String shopName, int contactNumber, String emailId, Location location,Inventory inventory) {
         this.id = id;
         this.shopName = shopName;
         this.contactNumber = contactNumber;
         this.emailId = emailId;
         this.location = location;
-        this.products = products;
+        this.inventory = inventory;
     }
 
     public Store(int id, String shopName, int contactNumber, String emailId) {
@@ -88,14 +84,7 @@ public class Store {
     public void setLocation(Location location) {
         this.location = location;
     }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+    
 
     @Override
     public int hashCode() {
@@ -123,8 +112,14 @@ public class Store {
         strBuilder.append(", Shop name:-  " + this.shopName);
         strBuilder.append(", Contact:- " + this.contactNumber);
         strBuilder.append(",\n Address:- " + this.location);
-        strBuilder.append("\n No. of Products:- " + this.products.size() + " ]\n");
-
         return strBuilder.toString();
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }
