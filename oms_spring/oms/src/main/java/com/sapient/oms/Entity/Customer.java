@@ -68,6 +68,11 @@ public class Customer {
     }
 
     @Override
+    public int hashCode() {
+        return this.customerId;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
