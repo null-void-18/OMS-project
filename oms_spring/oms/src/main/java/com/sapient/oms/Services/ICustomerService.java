@@ -6,6 +6,6 @@ import com.sapient.oms.entity.Customer;
 
 public interface ICustomerService {
     List<Customer> getValue();
-    int save(Customer customer);
+    Customer save(Customer customer);
     void delete(Integer id);
 }

@@ -83,6 +83,20 @@ public class Location {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Location location = (Location) obj;
+        if (this.id != location.id)
+            return false;
+        return true;
+    }
+
+    @Override
     public String toString() {
         StringBuilder strBuildr = new StringBuilder();
         strBuildr.append(", Address:- " + this.lineAddress);

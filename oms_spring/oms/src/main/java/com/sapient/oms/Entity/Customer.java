@@ -68,6 +68,20 @@ public class Customer {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Customer customer = (Customer) obj;
+        if (this.customerId != customer.customerId)
+            return false;
+        return true;
+    }
+
+    @Override
     public String toString() {
         StringBuilder strBuildr = new StringBuilder();
         strBuildr.append("Customer Id:- " + this.customerId);

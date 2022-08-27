@@ -6,6 +6,6 @@ import com.sapient.oms.entity.Store;
 
 public interface IStoreService {
     List<Store> getValue();
-    int save(Store store);
+    Store save(Store store);
     void delete(Integer id);
 }

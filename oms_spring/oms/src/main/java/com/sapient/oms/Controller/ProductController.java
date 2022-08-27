@@ -1,5 +1,7 @@
 package com.sapient.oms.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +34,7 @@ public class ProductController {
     public
     String findById(@PathVariable("id") Integer id) {
         try {
-            Product product = productService.findById(id);
+            Optional<Product> product = productService.findById(id);
             return product.toString();
         } catch (ProductNotFoundException e) {
             return e.getMessage();
@@ -53,7 +55,5 @@ public class ProductController {
     @DeleteMapping("/{id}")
     void delete(@PathVariable("id") Integer id){
         productService.delete(id);
-    }
-
-    
+    }  
 }

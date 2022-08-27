@@ -6,6 +6,6 @@ import com.sapient.oms.entity.Location;
 
 public interface ILocationService {
     List<Location> getValue();
-    int save(Location location);
+    Location save(Location location);
     void delete(Integer id);
 }

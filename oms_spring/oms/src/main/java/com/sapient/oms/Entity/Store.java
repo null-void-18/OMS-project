@@ -98,6 +98,20 @@ public class Store {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Store store = (Store) obj;
+        if (this.id != store.id)
+            return false;
+        return true;
+    }
+
+    @Override
     public String toString() {
         StringBuilder strBuilder = new StringBuilder();
         strBuilder.append("[ StoreId:- " + this.id);

@@ -5,6 +5,6 @@ import com.sapient.oms.entity.Order;
 
 public interface IOrderService {
     List<Order> getValue();
-    int save(Order order);
+    Order save(Order order);
     void delete(Integer id);
 }

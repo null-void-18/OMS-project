@@ -14,9 +14,8 @@ public class StoreService implements IStoreService {
     StoreRepository storeRepository;
 
     @Override
-    public int save(Store store) {
-        storeRepository.save(store);
-        return store.getId();
+    public Store save(Store store) {
+        return storeRepository.save(store);
     }
 
     @Override

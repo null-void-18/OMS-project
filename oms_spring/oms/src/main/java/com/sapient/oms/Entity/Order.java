@@ -44,4 +44,23 @@ public class Order {
         this.id = id;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Order order = (Order) obj;
+        if (this.id != order.id)
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Order [id=" + id + ", price=" + price + "]";
+    }
+
 }

@@ -19,9 +19,8 @@ public class CustomerService implements ICustomerService{
     }
 
     @Override
-    public int save(Customer entity) {
-        customerRepository.save(entity);
-        return 1;
+    public Customer save(Customer entity) {
+        return customerRepository.save(entity);
     }
 
     @Override

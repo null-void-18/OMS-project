@@ -23,9 +23,8 @@ public class LocationService implements ILocationService {
     }
 
     @Override
-    public int save(Location entity) {
-        locationRepository.save(entity);
-        return 1;
+    public Location save(Location entity) {
+        return locationRepository.save(entity);
     }
 
 }

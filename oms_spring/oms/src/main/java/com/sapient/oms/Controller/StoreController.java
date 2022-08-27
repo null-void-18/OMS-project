@@ -26,9 +26,8 @@ public class StoreController {
 
     @PostMapping
     public
-    int save(@RequestBody Store store) {
-        int id = storeService.save(store);
-        return id;
+    void save(@RequestBody Store store) {
+        storeService.save(store);
     }
 
     @DeleteMapping("/{id}")
