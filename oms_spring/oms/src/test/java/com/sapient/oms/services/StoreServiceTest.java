@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+import java.util.HashSet;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,12 +36,12 @@ public class StoreServiceTest {
         expectedStore.setContactNumber(12345);
         expectedStore.setEmailId("abc@gmail.com");
         expectedStore.setLocation(new Location());
-        expectedStore.setInventory(new Inventory());
+        expectedStore.setInventory(new HashSet<Inventory>());
     }
 
     @Test
     void testSaveStore() {
-        Store store = new Store(10, "shop", 12345, "abc@gmail.com", new Location(), new Inventory());
+        Store store = new Store(10, "shop", 12345, "abc@gmail.com", new Location(), new HashSet<Inventory>());
         when(storeRepository.save(any(Store.class))).thenReturn(store);
         Store actualStore = storeService.save(store);
         assertEquals(expectedStore, actualStore);

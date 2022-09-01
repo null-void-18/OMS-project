@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,8 +18,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.sapient.oms.entity.Product;
 import com.sapient.oms.entity.Inventory;
+import com.sapient.oms.entity.Product;
 import com.sapient.oms.exception.ProductNotFoundException;
 import com.sapient.oms.repositories.ProductRepository;
 
@@ -41,12 +42,12 @@ public class ProductServiceTest {
         expectedProduct.setCost(40);
         expectedProduct.setMdate(new Date());
         expectedProduct.setEdate(new Date());
-        expectedProduct.setInventory(new Inventory());
+        expectedProduct.setInventory(new HashSet<Inventory>());
     }
 
     @Test
     void testSaveProduct() {
-        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new Inventory());
+        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new HashSet<Inventory>());
         when(productRepository.save(any(Product.class))).thenReturn(product);
         Product actualProduct = productService.save(product);
         assertEquals(actualProduct, expectedProduct);
@@ -54,7 +55,7 @@ public class ProductServiceTest {
 
     @Test
     void testFindProductByIdExists() {
-        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new Inventory());
+        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new HashSet<Inventory>());
         Optional<Product> product1 = Optional.of(product);
         when(productRepository.findById(10)).thenReturn(product1);
         Product actualProduct = productService.findById(10).orElse(null);
@@ -70,7 +71,7 @@ public class ProductServiceTest {
 
     @Test
     void testFindProductByNameExists() {
-        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new Inventory());
+        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new HashSet<Inventory>());
         List<Product> products = new ArrayList<>();
         products.add(product);
         when(productRepository.findAll()).thenReturn(products);
@@ -80,7 +81,7 @@ public class ProductServiceTest {
 
     @Test
     void testFindProductByNameDoesNotExist() {
-        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new Inventory());
+        Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new HashSet<Inventory>());
         List<Product> products = new ArrayList<>();
         products.add(product);
         when(productRepository.findAll()).thenReturn(products);

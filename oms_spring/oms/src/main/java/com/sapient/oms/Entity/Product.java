@@ -1,12 +1,15 @@
 package com.sapient.oms.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -30,17 +33,17 @@ public class Product {
     @JsonFormat(pattern = "dd/mm/yyyy")
     private Date edate;
     private double cost;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id.product")
+    private Set<Inventory> inventory = new HashSet<Inventory>();
 
-    @OneToOne(mappedBy = "store")
-    Inventory inventory;
 
-    public Product(int id, String productName, Date mdate, Date edate, double cost,Inventory inventory) {
+    public Product(int id, String productName, Date mdate, Date edate, double cost,Set<Inventory> inventories) {
         this.id = id;
         this.productName = productName;
         this.mdate = mdate;
         this.edate = edate;
         this.cost = cost;
-        this.inventory = inventory;
+        this.inventory = inventories;
     }
 
     public Product() {
@@ -119,11 +122,11 @@ public class Product {
         return strBuilder.toString();
     }
 
-    public Inventory getInventory() {
+    public Set<Inventory> getInventory() {
         return inventory;
     }
 
-    public void setInventory(Inventory inventory) {
+    public void setInventory(Set<Inventory> inventory) {
         this.inventory = inventory;
     }
 }

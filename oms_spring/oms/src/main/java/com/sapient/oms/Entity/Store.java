@@ -1,10 +1,15 @@
 package com.sapient.oms.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,22 +23,26 @@ public class Store {
     private String shopName;
     private int contactNumber;
     private String emailId;
-
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id.store")
+    private Set<Inventory> inventory = new HashSet<Inventory>();
     @OneToOne(cascade = CascadeType.ALL)
     private Location location;
 
-    @OneToOne(mappedBy = "product")
-    Inventory inventory;
+    public Set<Inventory> getInventory() {
+        return inventory;
+    }
+    public void setInventory(Set<Inventory> inventory) {
+        this.inventory = inventory;
+    }
 
-    public Store(int id, String shopName, int contactNumber, String emailId, Location location,Inventory inventory) {
+    public Store(int id, String shopName, int contactNumber, String emailId, Location location,Set<Inventory> inventories) {
         this.id = id;
         this.shopName = shopName;
         this.contactNumber = contactNumber;
         this.emailId = emailId;
         this.location = location;
-        this.inventory = inventory;
+        this.inventory = inventories;
     }
-
     public Store(int id, String shopName, int contactNumber, String emailId) {
         this.id = id;
         this.shopName = shopName;
@@ -113,13 +122,5 @@ public class Store {
         strBuilder.append(", Contact:- " + this.contactNumber);
         strBuilder.append(",\n Address:- " + this.location);
         return strBuilder.toString();
-    }
-
-    public Inventory getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
     }
 }
