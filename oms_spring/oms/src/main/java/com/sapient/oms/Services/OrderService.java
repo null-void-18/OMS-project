@@ -1,10 +1,13 @@
 package com.sapient.oms.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.sapient.oms.entity.Order;
+import com.sapient.oms.exception.OrderNotFoundException;
 import com.sapient.oms.repositories.OrderRepository;
 
 
@@ -28,4 +31,12 @@ public class OrderService implements IOrderService {
         return orderRepository.save(entity);
     }
 
+    @Override
+    public Optional<Order> findById(Integer id) throws OrderNotFoundException {
+        Optional<Order> order = orderRepository.findById(id);
+        if(order.isEmpty()) {
+            throw new OrderNotFoundException("Order id="+id+" not found");
+        }
+        return order;
+    }
 }
