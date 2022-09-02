@@ -1,8 +1,6 @@
 package com.sapient.oms.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -11,7 +9,6 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "location")
 public class Location {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @NotBlank(message = "please provide address here")
     private String lineAddress;

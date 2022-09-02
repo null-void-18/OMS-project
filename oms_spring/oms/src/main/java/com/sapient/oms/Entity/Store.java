@@ -4,10 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -18,12 +17,12 @@ import javax.persistence.Table;
 public class Store {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "store_id")
     private int id;
     private String shopName;
     private int contactNumber;
     private String emailId;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id.store")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "id.store")
     private Set<Inventory> inventory = new HashSet<Inventory>();
     @OneToOne(cascade = CascadeType.ALL)
     private Location location;

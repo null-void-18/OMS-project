@@ -1,21 +1,22 @@
 package com.sapient.oms.services;
 
-import java.util.*;
-import javax.mail.*;
-import javax.mail.Session;
-import javax.mail.Transport;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.sapient.oms.entity.Customer;
-
 public class EmailService {
 
-    public String sendmail(String recipient, Customer customer) {
-
+    public String sendmail(String subject, String body,String email) {
+        if(email == null) {
+            return "Mail not sent";
+        }
         String sender = "kiransekhar18@gmail.com";
 
         String host = "smtp.gmail.com";
@@ -41,11 +42,11 @@ public class EmailService {
 
             message.setFrom(sender);
 
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
 
-            message.setSubject("Subject");
+            message.setSubject(subject);
 
-            message.setText("This is the text");
+            message.setText(body);
            
             Transport.send(message);
             return "Mail sent successfully";

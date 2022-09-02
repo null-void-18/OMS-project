@@ -4,10 +4,9 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "product_id")
     private int id;
 
     @NotBlank(message = "please provide product name here")
@@ -33,8 +32,11 @@ public class Product {
     @JsonFormat(pattern = "dd/mm/yyyy")
     private Date edate;
     private double cost;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id.product")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "id.product")
     private Set<Inventory> inventory = new HashSet<Inventory>();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "id.product")
+    private Set<OrderItem> orderitems = new HashSet<OrderItem>();
 
 
     public Product(int id, String productName, Date mdate, Date edate, double cost,Set<Inventory> inventories) {
@@ -88,12 +90,25 @@ public class Product {
     public void setCost(double d) {
         this.cost = d;
     }
+    public Set<Inventory> getInventory() {
+        return inventory;
+    }
 
+    public void setInventory(Set<Inventory> inventory) {
+        this.inventory = inventory;
+    }
+
+    public Set<OrderItem> getOrderitems() {
+        return orderitems;
+    }
+
+    public void setOrderitems(Set<OrderItem> orderitems) {
+        this.orderitems = orderitems;
+    }
     @Override
     public int hashCode() {
         return this.id;
     }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -120,13 +135,5 @@ public class Product {
         strBuilder.append(", Expiry:- " + this.edate + " ]");
 
         return strBuilder.toString();
-    }
-
-    public Set<Inventory> getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Set<Inventory> inventory) {
-        this.inventory = inventory;
     }
 }

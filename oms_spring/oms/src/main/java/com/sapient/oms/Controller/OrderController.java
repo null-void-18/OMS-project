@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sapient.oms.entity.Order;
+import com.sapient.oms.enums.ORDER_STATUS;
 import com.sapient.oms.exception.OrderNotFoundException;
 import com.sapient.oms.services.IOrderService;
 
@@ -35,6 +36,11 @@ public class OrderController {
         } catch (OrderNotFoundException e) {
             return e.getMessage();
         }
+    }
+
+    @GetMapping("/status/{status}")
+    public List<Order> findByOrderStatus(@PathVariable("status") ORDER_STATUS orderStatus){
+        return orderService.findByOrderStatus(orderStatus);
     }
 
     @PostMapping

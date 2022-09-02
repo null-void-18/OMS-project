@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.sapient.oms.Mail.Mail;
 import com.sapient.oms.entity.Customer;
 
 @ExtendWith(MockitoExtension.class)
@@ -13,18 +14,17 @@ public class EmailTest {
 
     @Test
     void testSendMailSuccess() {
-        EmailService mail = new EmailService();
-        String expectedMessage = "Mail sent successfully";
-        String actualMessage = mail.sendmail("kirankoolkidoz@gmail.com", new Customer());
-        assertEquals(expectedMessage, actualMessage);
+        Mail sendmail = new Mail();
+        String actualResult = sendmail.mailUserOnCreation(new Customer(10, "xxx", "*****", "kirankoolkidoz@gmail.com"));
+        String expectedResult = "Mail sent successfully";
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
     void testSendMailFailure() {
-        EmailService mail = new EmailService();
-        String expectedMessage = "Mail not sent";
-        String actualMessage = mail.sendmail("", new Customer());
-        assertEquals(expectedMessage, actualMessage);
-    }
-    
+        Mail sendmail = new Mail();
+        String actualResult = sendmail.mailUserOnCreation(new Customer());
+        String expectedResult = "Mail not sent";
+        assertEquals(expectedResult, actualResult);
+    }  
 }
