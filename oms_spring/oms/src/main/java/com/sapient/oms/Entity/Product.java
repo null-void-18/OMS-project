@@ -1,12 +1,17 @@
 package com.sapient.oms.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,8 +25,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-    private int id;
+    private int productId;
 
     @NotBlank(message = "please provide product name here")
     private String productName;
@@ -32,15 +38,15 @@ public class Product {
     @JsonFormat(pattern = "dd/mm/yyyy")
     private Date edate;
     private double cost;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "id.product")
-    private Set<Inventory> inventory = new HashSet<Inventory>();
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    private Collection<Inventory> inventory = new ArrayList<Inventory>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "id.product")
     private Set<OrderItem> orderitems = new HashSet<OrderItem>();
 
 
-    public Product(int id, String productName, Date mdate, Date edate, double cost,Set<Inventory> inventories) {
-        this.id = id;
+    public Product(int productId, String productName, Date mdate, Date edate, double cost,Collection<Inventory> inventories) {
+        this.productId = productId;
         this.productName = productName;
         this.mdate = mdate;
         this.edate = edate;
@@ -52,11 +58,11 @@ public class Product {
     }
 
     public int getId() {
-        return id;
+        return productId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
@@ -90,7 +96,7 @@ public class Product {
     public void setCost(double d) {
         this.cost = d;
     }
-    public Set<Inventory> getInventory() {
+    public Collection<Inventory> getInventory() {
         return inventory;
     }
 
@@ -107,7 +113,7 @@ public class Product {
     }
     @Override
     public int hashCode() {
-        return this.id;
+        return this.productId;
     }
 
     @Override
@@ -119,7 +125,7 @@ public class Product {
         if (getClass() != obj.getClass())
             return false;
         Product product = (Product) obj;
-        if (this.id != product.id)
+        if (this.productId != product.productId)
             return false;
         return true;
     }
@@ -128,7 +134,7 @@ public class Product {
     public String toString() {
 
         StringBuilder strBuilder = new StringBuilder();
-        strBuilder.append("[ Product Id:- " + this.id);
+        strBuilder.append("[ Product Id:- " + this.productId);
         strBuilder.append(", Title:- " + this.productName);
         strBuilder.append(", Price:-  " + this.cost);
         strBuilder.append(", Manufactured:- " + this.mdate);

@@ -1,52 +1,52 @@
 package com.sapient.oms.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name = "store")
 public class Store {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "store_id")
-    private int id;
+    private int storeId;
     private String shopName;
     private int contactNumber;
     private String emailId;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "id.store")
-    private Set<Inventory> inventory = new HashSet<Inventory>();
-    @OneToOne(cascade = CascadeType.ALL)
-    private Location location;
+    @OneToMany(mappedBy = "store",cascade = CascadeType.ALL)
+    private Collection<Inventory> inventory = new ArrayList<Inventory>();
 
-    public Set<Inventory> getInventory() {
+    public Collection<Inventory> getInventory() {
         return inventory;
     }
-    public void setInventory(Set<Inventory> inventory) {
-        this.inventory = inventory;
-    }
-
-    public Store(int id, String shopName, int contactNumber, String emailId, Location location,Set<Inventory> inventories) {
-        this.id = id;
-        this.shopName = shopName;
-        this.contactNumber = contactNumber;
-        this.emailId = emailId;
-        this.location = location;
+    public void setInventory(Collection<Inventory> inventories) {
         this.inventory = inventories;
     }
-    public Store(int id, String shopName, int contactNumber, String emailId) {
-        this.id = id;
+
+    public Store(int storeId, String shopName, int contactNumber, String emailId,Collection<Inventory> inventories) {
+        this.storeId = storeId;
         this.shopName = shopName;
         this.contactNumber = contactNumber;
         this.emailId = emailId;
+        this.inventory = inventories;
+    }
+    public Store(Store store) {
+        this.storeId = store.storeId;
+        this.shopName = store.shopName;
+        this.contactNumber = store.contactNumber;
+        this.emailId = store.emailId;
 
     }
 
@@ -54,11 +54,11 @@ public class Store {
     }
 
     public int getId() {
-        return id;
+        return storeId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int storeId) {
+        this.storeId = storeId;
     }
 
     public String getShopName() {
@@ -85,18 +85,9 @@ public class Store {
         this.emailId = emailId;
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-    
-
     @Override
     public int hashCode() {
-        return this.id;
+        return this.storeId;
     }
     
     @Override
@@ -108,7 +99,7 @@ public class Store {
         if (getClass() != obj.getClass())
             return false;
         Store store = (Store) obj;
-        if (this.id != store.id)
+        if (this.storeId != store.storeId)
             return false;
         return true;
     }
@@ -116,10 +107,10 @@ public class Store {
     @Override
     public String toString() {
         StringBuilder strBuilder = new StringBuilder();
-        strBuilder.append("[ StoreId:- " + this.id);
+        strBuilder.append("[ StoreId:- " + this.storeId);
         strBuilder.append(", Shop name:-  " + this.shopName);
         strBuilder.append(", Contact:- " + this.contactNumber);
-        strBuilder.append(",\n Address:- " + this.location);
+        strBuilder.append(", Products:- "+ this.inventory);
         return strBuilder.toString();
     }
 }

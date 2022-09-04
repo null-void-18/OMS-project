@@ -14,7 +14,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.sapient.oms.entity.Inventory;
-import com.sapient.oms.entity.Location;
 import com.sapient.oms.entity.Store;
 import com.sapient.oms.repositories.StoreRepository;
 
@@ -35,16 +34,14 @@ public class StoreServiceTest {
         expectedStore.setShopName("shop");
         expectedStore.setContactNumber(12345);
         expectedStore.setEmailId("abc@gmail.com");
-        expectedStore.setLocation(new Location());
         expectedStore.setInventory(new HashSet<Inventory>());
     }
 
     @Test
     void testSaveStore() {
-        Store store = new Store(10, "shop", 12345, "abc@gmail.com", new Location(), new HashSet<Inventory>());
+        Store store = new Store(10, "shop", 12345, "abc@gmail.com", new HashSet<Inventory>());
         when(storeRepository.save(any(Store.class))).thenReturn(store);
         Store actualStore = storeService.save(store);
         assertEquals(expectedStore, actualStore);
-    }
-    
+    }  
 }

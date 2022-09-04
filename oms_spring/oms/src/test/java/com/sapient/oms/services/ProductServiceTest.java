@@ -58,7 +58,7 @@ public class ProductServiceTest {
         Product product = new Product(10, "chocolate", new Date(), new Date(), 40,new HashSet<Inventory>());
         Optional<Product> product1 = Optional.of(product);
         when(productRepository.findById(10)).thenReturn(product1);
-        Product actualProduct = productService.findById(10).orElse(null);
+        Product actualProduct = productService.findById(10);
         assertEquals(expectedProduct, actualProduct);
     }
 

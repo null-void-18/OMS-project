@@ -1,7 +1,5 @@
 package com.sapient.oms.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +18,24 @@ public class StoreController {
     @Autowired  //dependecny injection
     IStoreService storeService;// never create object
     @GetMapping
-    List<Store> getStore() {
-        return storeService.getValue();
+    String getStore() {
+        return storeService.getValue().toString();
     }
 
     @PostMapping
-    public
-    void save(@RequestBody Store store) {
+    public void save(@RequestBody Store store) {
         storeService.save(store);
+    }
+
+    @PostMapping("/{store}/{product}/{quantity}")
+    public String addProduct(@PathVariable("store") Integer storeId,@PathVariable("product") Integer productId,@PathVariable("quantity") Integer quantity) {
+        try{
+        storeService.addProduct(storeId,productId,quantity);
+        }
+        catch(Exception ex){
+            return ex.getMessage();
+        }
+        return "Product added to store"+storeId;
     }
 
     @DeleteMapping("/{id}")
