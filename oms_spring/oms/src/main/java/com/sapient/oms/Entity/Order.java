@@ -1,13 +1,13 @@
 package com.sapient.oms.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,24 +18,29 @@ import com.sapient.oms.enums.ORDER_STATUS;
 @Table(name = "orders")
 public class Order {
     @Id
-    private int id;
+    private int orderId;
     @Column(name = "cost")
     private float price;
     @Enumerated(EnumType.STRING)
     ORDER_STATUS orderStatus;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "id.order")
-    private Set<OrderItem> orderitems = new HashSet<OrderItem>();
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
+    private Collection<OrderItem> orderitems = new ArrayList<OrderItem>();
 
     public Order() {
     }
 
-    public Order(int id, float price, ORDER_STATUS placed) {
-        this.id = id;
+    public Order(int orderId, float price, ORDER_STATUS placed) {
+        this.orderId = orderId;
         this.price = price;
         this.orderStatus = placed;
     }
 
+    public Order(Order order){
+        this.orderId = order.orderId;
+        this.price = order.price;
+        this.orderStatus = order.orderStatus;
+    }
     public float getPrice() {
         return price;
     }
@@ -44,12 +49,20 @@ public class Order {
         this.price = price;
     }
 
-    public int getId() {
-        return id;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public Collection<OrderItem> getOrderitems() {
+        return orderitems;
+    }
+
+    public void setOrderitems(Collection<OrderItem> orderitems) {
+        this.orderitems = orderitems;
     }
 
     public ORDER_STATUS getOrderStatus() {
@@ -62,7 +75,7 @@ public class Order {
 
     @Override
     public int hashCode() {
-        return this.id;
+        return this.orderId;
     }
 
     @Override
@@ -74,13 +87,14 @@ public class Order {
         if (getClass() != obj.getClass())
             return false;
         Order order = (Order) obj;
-        if (this.id != order.id)
+        if (this.orderId != order.orderId)
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "Order [id=" + id + ", price=" + price + "]";
+        return "Order [orderId=" + orderId + ", orderStatus=" + orderStatus + ", orderitems=" + orderitems + ", price="
+                + price + "]";
     }
 }

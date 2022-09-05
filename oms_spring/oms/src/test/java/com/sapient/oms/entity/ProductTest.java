@@ -12,13 +12,13 @@ public class ProductTest {
     Product product;
     private static int id;
     private static String productName;
-    private static double cost;
+    private static int cost;
 
     @BeforeAll
     static void setup(){
         id = 1;
         productName = "Shampoo";
-        cost = 190.25;
+        cost = 190;
     }
 
     @BeforeEach
@@ -28,8 +28,8 @@ public class ProductTest {
 
     @Test
     void testId() {
-        product.setId(1);
-        assertEquals(id, product.getId());
+        product.setProductId(1);
+        assertEquals(id, product.getProductId());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class ProductTest {
 
     @Test
     void testCost() {
-        product.setCost(190.25);
+        product.setCost(190);
         assertEquals(cost, product.getCost());
     }
 }

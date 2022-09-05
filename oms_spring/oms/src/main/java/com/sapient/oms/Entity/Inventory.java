@@ -25,12 +25,6 @@ public class Inventory {
     public Inventory() { 
     }
 
-    
-    public Inventory(int quantity) {
-        this.quantity = quantity;
-    }
-
-
     public InventoryId getId() {
         return id;
     }

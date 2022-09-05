@@ -27,7 +27,7 @@ public class Mail {
         String subject = "Order Placed";
         String body = "<h3>Hi " + order.getOrderStatus().toString() + ". Your order has been successfully Placed</h3>"
                 + "<h4>Order Details</h4></br>"
-                + "<p><b>Order Id:</b>" + order.getId() + "</p>"
+                + "<p><b>Order Id:</b>" + order.getOrderId() + "</p>"
                 + "<p><b>Order Price:</b>" + order.getPrice() + "</p>"
                 + "<p>We are looking forward to deliever the order asap</p>";
         sendEmail.sendmail(subject, body, order.getOrderStatus().toString());

@@ -34,7 +34,7 @@ public class OrderServiceTest {
     @BeforeEach
     void setup() {
         expectedOrder = new Order();
-        expectedOrder.setId(10);
+        expectedOrder.setOrderId(10);
         expectedOrder.setPrice(4000);
         expectedOrder.setOrderStatus(ORDER_STATUS.PLACED);
     }
@@ -52,7 +52,7 @@ public class OrderServiceTest {
         Order order = new Order(10,4000, ORDER_STATUS.PLACED);
         Optional<Order> order1 = Optional.of(order);
         when(orderRepository.findById(10)).thenReturn(order1);
-        Order actualProduct = orderService.findById(10).orElse(null);
+        Order actualProduct = orderService.findById(10);
         assertEquals(expectedOrder, actualProduct);
     }
 

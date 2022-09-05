@@ -1,7 +1,6 @@
 package com.sapient.oms.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,14 +23,14 @@ public class OrderController {
     IOrderService orderService;// never create object
 
     @GetMapping
-    List<Order> getStore() {
-        return orderService.getValue();
+    String getStore() {
+        return orderService.getValue().toString();
     }
 
     @GetMapping("/id/{id}")
     public String findById(@PathVariable("id") Integer id) {
         try {
-            Optional<Order> order = orderService.findById(id);
+            Order order = orderService.findById(id);
             return order.toString();
         } catch (OrderNotFoundException e) {
             return e.getMessage();

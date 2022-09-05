@@ -25,7 +25,7 @@ public class StoreService implements IStoreService {
     public Store save(Store store) {
         Store newStore = new Store(store);
         newStore.getInventory().addAll((store.getInventory().stream().map(inventories -> {
-            Product product = productService.findById(inventories.getProduct().getId());
+            Product product = productService.findById(inventories.getProduct().getProductId());
             Inventory inventory = new Inventory();
             inventory.setProduct(product);
             inventory.setStore(newStore);

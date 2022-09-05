@@ -37,7 +37,7 @@ public class ProductServiceTest {
     @BeforeEach
     void setup() {
         expectedProduct = new Product();
-        expectedProduct.setId(10);
+        expectedProduct.setProductId(10);
         expectedProduct.setProductName("chocolate");
         expectedProduct.setCost(40);
         expectedProduct.setMdate(new Date());
