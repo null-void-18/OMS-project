@@ -73,7 +73,7 @@ public class InventoryServiceTest {
         inventory.setStore(new Store());
         List<Inventory> inventories = new ArrayList<Inventory>();
         inventories.add(inventory);
-        when(storeService.findById(anyInt())).thenReturn(new Store());
+        when(storeService.findById(anyInt())).thenReturn(new Store().toString());
         when(inventoryRepository.findByIdStoreId(anyInt())).thenReturn(inventories);
         List<Inventory> actualInventory = inventoryService.findByStoreId(100);
         List<Inventory> expectedResult = new ArrayList<Inventory>();
