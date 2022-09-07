@@ -42,7 +42,7 @@ public class ProductServiceTest {
         expectedProduct.setCost(40);
         expectedProduct.setMdate(new Date());
         expectedProduct.setEdate(new Date());
-        expectedProduct.setInventory(new HashSet<Inventory>());
+        // expectedProduct.setInventory(new HashSet<Inventory>());
     }
 
     @Test

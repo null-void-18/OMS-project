@@ -1,5 +1,8 @@
 package com.sapient.oms.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sapient.oms.entity.Inventory;
 import com.sapient.oms.services.IInventoryService;
 
 @CrossOrigin
@@ -18,16 +22,17 @@ public class InventoryController {
     IInventoryService inventoryService;
 
     @GetMapping
-    String findAll(){
-        return inventoryService.findAll().toString();
+    List<Inventory> findAll(){
+        return inventoryService.findAll();
     }
 
     @GetMapping("/{store}")
-    String findByStoreId(@PathVariable("store") Integer storeId){
+    List<Inventory> findByStoreId(@PathVariable("store") Integer storeId){
         try {
-            return inventoryService.findByStoreId(storeId).toString();
+            return inventoryService.findByStoreId(storeId);
         } catch (Exception e) {
-            return e.getMessage();
+            System.out.println(e.getMessage());
+            return new ArrayList<Inventory>();
         }
     }
 

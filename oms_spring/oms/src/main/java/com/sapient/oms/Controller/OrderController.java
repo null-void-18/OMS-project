@@ -25,17 +25,18 @@ public class OrderController {
     IOrderService orderService;// never create object
 
     @GetMapping
-    String getStore() {
-        return orderService.getValue().toString();
+    List<Order> getStore() {
+        return orderService.getValue();
     }
 
     @GetMapping("/id/{id}")
-    public String findById(@PathVariable("id") Integer id) {
+    public Order findById(@PathVariable("id") Integer id) {
         try {
             Order order = orderService.findById(id);
-            return order.toString();
+            return order;
         } catch (OrderNotFoundException e) {
-            return e.getMessage();
+            System.out.println(e.getMessage());
+            return new Order();
         }
     }
 

@@ -32,9 +32,6 @@ public class OrderItem {
         this.price = price;
     }
 
-    public OrderItemId getId() {
-        return id;
-    }
     public void setId(OrderItemId id) {
         this.id = id;
     }
@@ -49,10 +46,6 @@ public class OrderItem {
     }
     public void setPrice(int price) {
         this.price = price;
-    }
-    
-    public Order getOrder() {
-        return order;
     }
 
     public void setOrder(Order order) {

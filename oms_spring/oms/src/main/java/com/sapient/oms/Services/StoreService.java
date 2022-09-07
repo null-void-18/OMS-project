@@ -47,12 +47,12 @@ public class StoreService implements IStoreService {
     }
 
     @Override
-    public String findById(Integer storeId) throws StoreNotFoundException{
+    public Store findById(Integer storeId) throws StoreNotFoundException{
         Store store = storeRepository.findById(storeId).orElse(null);
         if(store == null) {
             throw new StoreNotFoundException("Store Not Found");
         }
-        return store.toString();
+        return store;
     }
 
     @Override
