@@ -1,5 +1,7 @@
 package com.sapient.oms.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,8 +23,8 @@ public class ProductController {
     @Autowired  //dependecny injection
     IProductService productService;// never create object
     @GetMapping
-    String getProduct() {
-        return productService.getValue().toString();
+    List<Product> getProduct() {
+        return productService.getValue();
     }
 
     @PostMapping
@@ -32,22 +34,24 @@ public class ProductController {
 
     @GetMapping("/id/{id}")
     public
-    String findById(@PathVariable("id") Integer id) {
+    Product findById(@PathVariable("id") Integer id) {
         try {
             Product product = productService.findById(id);
-            return product.toString();
+            return product;
         } catch (ProductNotFoundException e) {
-            return e.getMessage();
+            System.out.println(e.getMessage());
+            return new Product();
         } 
     }
 
     @GetMapping("/name/{productName}")
-    String findByName(@PathVariable("productName") String name) {
+    Product findByName(@PathVariable("productName") String name) {
         try {
             Product product = productService.findByName(name);
-            return product.toString();
+            return product;
         } catch (ProductNotFoundException e) {
-            return e.getMessage();
+            System.out.println(e.getMessage());
+            return new Product();
         }
     }
 

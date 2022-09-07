@@ -60,20 +60,6 @@ public class Product {
         this.productId = productId;
     }
 
-    public void setInventory(Collection<Inventory> inventory) {
-        this.inventory = inventory;
-    }
-
-    public Collection<OrderItem> getOrderitems() {
-        return orderitems;
-    }
-
-    public void setOrderitems(Collection<OrderItem> orderitems) {
-        this.orderitems = orderitems;
-    }
-
-    
-
     public String getProductName() {
         return productName;
     }
@@ -137,9 +123,5 @@ public class Product {
         strBuilder.append(", Expiry:- " + this.edate + " ]");
 
         return strBuilder.toString();
-    }
-
-    public Collection<Inventory> getInventory() {
-        return inventory;
     }
 }

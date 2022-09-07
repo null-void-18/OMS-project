@@ -1,5 +1,7 @@
 package com.sapient.oms.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,17 +23,18 @@ public class StoreController {
     IStoreService storeService;// never create object
 
     @GetMapping
-    String getStore() {
-        return storeService.getValue().toString();
+    List<Store> getStore() {
+        return storeService.getValue();
     }
 
     @GetMapping("/{store}")
-    String findByStoreId(@PathVariable("store") Integer storeId) {
-        try {
-            return storeService.findById(storeId);
-        } catch (Exception ex) {
-            return ex.getMessage();
-        }
+    Store findByStoreId(@PathVariable("store") Integer storeId) {
+            try{
+                return storeService.findById(storeId);
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+                return new Store();
+            }
     }
 
     @PostMapping

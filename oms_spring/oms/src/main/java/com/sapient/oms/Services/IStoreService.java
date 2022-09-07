@@ -9,5 +9,5 @@ public interface IStoreService {
     Store save(Store store);
     void delete(Integer id);
     Store addProduct(Integer storeId, Integer productId,Integer quantity);
-    String findById(Integer storeId);
+    Store findById(Integer storeId);
 }

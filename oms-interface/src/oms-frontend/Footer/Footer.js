@@ -1,10 +1,11 @@
 import React from 'react'
+import './Footer.css'
 
 function Footer() {
     return (
-        <footer id ="footer">
-            Copyright &copy;2022, OMS Inc
-        </footer>
+       <div id ="footer">
+            &copy; 2022, ABC.com, Inc
+       </div>
     )
 }
 

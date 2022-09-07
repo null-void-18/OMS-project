@@ -1,5 +1,7 @@
 package com.sapient.oms.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,8 +22,8 @@ public class LocationController {
     @Autowired  //dependecny injection
     ILocationService locationService;// never create object
     @GetMapping
-    String getStore() {
-        return locationService.getValue().toString();
+    List<Location> getStore() {
+        return locationService.getValue();
     }
 
     @PostMapping

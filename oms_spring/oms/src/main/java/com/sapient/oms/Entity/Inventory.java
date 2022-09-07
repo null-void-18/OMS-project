@@ -25,16 +25,8 @@ public class Inventory {
     public Inventory() { 
     }
 
-    public InventoryId getId() {
-        return id;
-    }
-
     public void setId(InventoryId id) {
         this.id = id;
-    }
-
-    public Store getStore() {
-        return store;
     }
 
     public void setStore(Store store) {
