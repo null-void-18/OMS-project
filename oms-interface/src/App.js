@@ -6,6 +6,8 @@ import {BrowserRouter as Router,Routes,Route,Link} from "react-router-dom"
 import Footer from "./oms-frontend/Footer/Footer"
 import ErrorPage from './oms-frontend/Home/ErrorPage';
 import Ordersearch from './oms-frontend/Order/Ordersearch';
+import OrderItems from './oms-frontend/Order/Orderdetails';
+
 function App() {
   return (
     <div className="App">
@@ -23,6 +25,7 @@ function App() {
                 <Route path="/store" element={<Storesearch/>} />
                 <Route path="/order" element={<Ordersearch/>} />
                 <Route path="/store/product/:id" element={<Products/>} />
+                <Route path="/order/item/:id" element={<OrderItems/>} />
                 <Route path="*" element={<ErrorPage/>}/>
             </Routes>
         </Router>

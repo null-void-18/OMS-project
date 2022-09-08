@@ -1,5 +1,7 @@
 package com.sapient.oms.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sapient.oms.entity.Order;
+import com.sapient.oms.entity.OrderItem;
 import com.sapient.oms.enums.ORDER_STATUS;
 import com.sapient.oms.exception.OrderNotFoundException;
 import com.sapient.oms.services.IOrderService;
@@ -27,6 +30,16 @@ public class OrderController {
     @GetMapping
     List<Order> getStore() {
         return orderService.getValue();
+    }
+
+    @GetMapping("/item/{order}")
+    Collection<OrderItem> getProducts(@PathVariable("order") Integer orderId) {
+            try{
+                return orderService.findById(orderId).getOrderitems();
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+                return new ArrayList<OrderItem>();
+            }
     }
 
     @GetMapping("/id/{id}")

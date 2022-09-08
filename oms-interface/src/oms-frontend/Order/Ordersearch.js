@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import axios from "axios"
 import "./Ordersearch.css"
+import {Link} from "react-router-dom"
 
 function Ordersearch() {
     const [users, setUsers] = useState([{}])
@@ -17,6 +18,22 @@ function Ordersearch() {
         })
     }
     
+    const displayData = (items) => {
+        return ( 
+            <tr>
+            <td><Link to={`/order/item/${items.orderId}`}>
+                {items.orderId}
+                </Link>
+            </td>
+            <td>
+                {items.orderStatus}
+            </td>
+            <td>
+                {items.price}
+            </td>
+        </tr>
+        )
+    }
 
     return (
         <div>
@@ -24,24 +41,21 @@ function Ordersearch() {
                 <b>Enter Order Status</b><input id="input" type="text" value={id} onChange={e => setId(e.target.value)}></input>
                 {(id.trim() && isNaN(+id)) ? <button onClick={handle}>Search</button> : <button disabled>Search</button>}
             </div>
-            <div className="result">
-                {
-                    users.map((items)=>
-                    <div>
+            <div className="tabl">
+                <table className="t">
+                    <thead>
+                        <tr>
+                            <td scope="col"><strong>Order ID</strong></td>
+                            <td scope="col"><strong>Order Status</strong></td>
+                            <td scope="col"><strong>Total Amount</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
                         {
-                            (items.orderitems)?
-                            items.orderitems.map((info)=>
-                            <div>
-                                {info.product.productName}
-                            </div>
-                            )
-                            :
-                            null
+                            users.map(displayData)
                         }
-                    </div>
-                    )
-                }
-                <h4>{users[0].orderId}</h4>
+                    </tbody>
+                </table>
             </div>
         </div>
     )
