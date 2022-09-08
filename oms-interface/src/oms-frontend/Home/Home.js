@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "../Footer/Footer";
+
 import "./Home.css"
 function Home() {
     return (
@@ -9,9 +9,6 @@ function Home() {
         </div>
         <div id="k">
 
-        </div>
-        <div>
-            <Footer/>
         </div>
         </div >
     )

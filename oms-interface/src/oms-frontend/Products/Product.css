@@ -1,23 +1,19 @@
 .result{
+    display: flex;
     height: 10vh;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.tab{
-    height: 30vh;
+.tabl{
+    height: 50vh;
     display: flex;
+    top: 0;
     align-items: center;
     justify-content: center;
 }
 
-b{
-    padding-right: 5px;
+.t {
+    border: 1px solid black;
+    width: 70%;
 }
-
-
-table,th,td{
-    border: 1px solid ;
-}
-

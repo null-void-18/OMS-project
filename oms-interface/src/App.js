@@ -1,7 +1,9 @@
 import './App.css';
 import Header from './oms-frontend/Home/Home';
+import Products from './oms-frontend/Products/Product';
 import Storesearch from './oms-frontend/Store/Storesearch';
 import {BrowserRouter as Router,Routes,Route,Link} from "react-router-dom"
+import Footer from "./oms-frontend/Footer/Footer"
 import ErrorPage from './oms-frontend/Home/ErrorPage';
 import Ordersearch from './oms-frontend/Order/Ordersearch';
 function App() {
@@ -20,9 +22,13 @@ function App() {
                 <Route path="/" element={<Header/>} />
                 <Route path="/store" element={<Storesearch/>} />
                 <Route path="/order" element={<Ordersearch/>} />
+                <Route path="/store/product/:id" element={<Products/>} />
                 <Route path="*" element={<ErrorPage/>}/>
             </Routes>
         </Router>
+        <div>
+            <Footer/>
+        </div>
     </div >
   );
 }
