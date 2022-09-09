@@ -7,6 +7,9 @@ import Footer from "./oms-frontend/Footer/Footer"
 import ErrorPage from './oms-frontend/Home/ErrorPage';
 import Ordersearch from './oms-frontend/Order/Ordersearch';
 import OrderItems from './oms-frontend/Order/Orderdetails';
+import Form from './oms-frontend/Login/Login';
+import Welcome from './oms-frontend/Login/LoginForm';
+import Signin from './oms-frontend/Login/Signin';
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/store">Stores</Link></li>
                     <li><Link to="/order">Orders</Link></li>
+                    <li><Link to="/welcome">Login</Link></li>
                 </ul>
             </nav>
             <Routes>
@@ -27,6 +31,9 @@ function App() {
                 <Route path="/store/product/:id" element={<Products/>} />
                 <Route path="/order/item/:id" element={<OrderItems/>} />
                 <Route path="*" element={<ErrorPage/>}/>
+                <Route path="/signup" element={<Form/>} />
+                <Route path="/welcome" element={<Welcome/>} />
+                <Route path="/signin" element={<Signin/>} />
             </Routes>
         </Router>
         <div>

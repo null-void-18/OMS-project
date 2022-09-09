@@ -33,7 +33,7 @@ public class OrderController {
     }
 
     @GetMapping("/item/{order}")
-    Collection<OrderItem> getProducts(@PathVariable("order") Integer orderId) {
+    Collection<OrderItem> getItems(@PathVariable("order") Integer orderId) {
             try{
                 return orderService.findById(orderId).getOrderitems();
             }catch(Exception e){
@@ -55,6 +55,9 @@ public class OrderController {
 
     @GetMapping("/status/{status}")
     public List<Order> findByOrderStatus(@PathVariable("status") ORDER_STATUS orderStatus){
+        if(orderStatus == ORDER_STATUS.ALL) {
+            return orderService.getValue();
+        }
         return orderService.findByOrderStatus(orderStatus);
     }
 

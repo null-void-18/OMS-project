@@ -28,4 +28,9 @@ public class CustomerService implements ICustomerService{
         return customerRepository.findAll();
     }
 
+    @Override
+    public Customer findByCustomerName(String name) {
+        return customerRepository.findByCustomerName(name).get(0);
+    }
+
 }

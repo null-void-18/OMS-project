@@ -47,7 +47,7 @@ function OrderItems() {
                 <h1>ITEMS IN ORDER</h1>
             </div>
             <div className="tabl">
-                <table className="t">
+                <table className="table">
                     <thead>
                         <tr>
                             <td scope="col"><strong>Product Name</strong></td>

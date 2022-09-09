@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +42,7 @@ public class OrderServiceTest {
 
     @Test
     void testSaveOrder() {
-        Order order = new Order(10,4000, ORDER_STATUS.PLACED);
+        Order order = new Order(10,4000, ORDER_STATUS.PLACED,new Date());
         when(orderRepository.save(any(Order.class))).thenReturn(order);
         Order actualOrder = orderService.save(order);
         assertEquals(expectedOrder, actualOrder);
@@ -49,7 +50,7 @@ public class OrderServiceTest {
 
     @Test
     void testFindOrderByIdExists() {
-        Order order = new Order(10,4000, ORDER_STATUS.PLACED);
+        Order order = new Order(10,4000, ORDER_STATUS.PLACED,new Date());
         Optional<Order> order1 = Optional.of(order);
         when(orderRepository.findById(10)).thenReturn(order1);
         Order actualProduct = orderService.findById(10);
@@ -65,7 +66,7 @@ public class OrderServiceTest {
 
     @Test
     void testFindOrderByOrderStatusExists() {
-        Order order = new Order(10, 4000, ORDER_STATUS.PLACED);
+        Order order = new Order(10, 4000, ORDER_STATUS.PLACED,new Date());
         List<Order> order1 = new ArrayList<>();
         order1.add(order);
         when(orderRepository.findAll()).thenReturn(order1);

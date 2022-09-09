@@ -26,6 +26,11 @@ public class CustomerController {
         return customerService.getValue();
     }
 
+    @GetMapping("/{customername}")
+    Customer getCustomer(@PathVariable("customername") String name) {
+        return customerService.findByCustomerName(name);
+    }
+
     @PostMapping
     void save(@RequestBody Customer customer) {
         customerService.save(customer);
