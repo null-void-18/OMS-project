@@ -7,5 +7,7 @@ Front-End : React JS,HTML, CSS
 
 Back-End : Node JS, MYSQL DB, Java
 
+Unit Testing : Junit5, Mockito
+
 FrameWorks : SpringBoot
 
