@@ -146,6 +146,7 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<finalName>oms-project</finalName>
 	</build>
 	<repositories>
 		<repository>
