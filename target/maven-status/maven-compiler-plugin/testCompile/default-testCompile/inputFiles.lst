@@ -1,0 +1,11 @@
+/home/kiran/coding/OMS-project/src/test/java/com/sapient/oms/entity/ProductTest.java
+/home/kiran/coding/OMS-project/src/test/java/com/sapient/oms/services/CustomerServiceTest.java
+/home/kiran/coding/OMS-project/src/test/java/com/sapient/oms/services/ProductServiceTest.java
+/home/kiran/coding/OMS-project/src/test/java/com/sapient/oms/services/LocationServiceTest.java
+/home/kiran/coding/OMS-project/src/test/java/com/sapient/oms/entity/LocationTest.java
+/home/kiran/coding/OMS-project/src/test/java/com/sapient/oms/services/InventoryServiceTest.java
+/home/kiran/coding/OMS-project/src/test/java/com/sapient/oms/entity/StoreTest.java
+/home/kiran/coding/OMS-project/src/test/java/com/sapient/oms/services/EmailTest.java
+/home/kiran/coding/OMS-project/src/test/java/com/sapient/oms/services/StoreServiceTest.java
+/home/kiran/coding/OMS-project/src/test/java/com/sapient/oms/services/OrderItemServiceTest.java
+/home/kiran/coding/OMS-project/src/test/java/com/sapient/oms/services/OrderServiceTest.java

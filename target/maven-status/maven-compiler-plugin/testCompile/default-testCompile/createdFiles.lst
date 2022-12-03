@@ -1,0 +1,11 @@
+com/sapient/oms/services/InventoryServiceTest.class
+com/sapient/oms/services/LocationServiceTest.class
+com/sapient/oms/services/ProductServiceTest.class
+com/sapient/oms/services/CustomerServiceTest.class
+com/sapient/oms/entity/ProductTest.class
+com/sapient/oms/services/OrderServiceTest.class
+com/sapient/oms/entity/StoreTest.class
+com/sapient/oms/services/StoreServiceTest.class
+com/sapient/oms/entity/LocationTest.class
+com/sapient/oms/services/OrderItemServiceTest.class
+com/sapient/oms/services/EmailTest.class
