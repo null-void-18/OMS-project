@@ -1,6 +1,4 @@
-FROM openjdk:8
-
-EXPOSE 8001
+FROM adoptopenjdk/openjdk11
 
 ADD target/oms-project.jar oms-project.jar
 
